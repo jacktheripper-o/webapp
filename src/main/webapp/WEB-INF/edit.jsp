@@ -12,6 +12,7 @@
 <head>
     <title>Edit page</title>
 </head>
+<div align="center">
 <body>
 <a href="/"> Back</a>
 <p>
