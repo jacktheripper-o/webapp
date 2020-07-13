@@ -12,7 +12,12 @@
 <head>
     <title>Edit page</title>
 </head>
+<div align="center">
 <body>
+<h2> username: ${username} </h2>
+<h2> first name: ${first_name}</h2>
+<h2> last name: ${last_name}</h2>
+
 <a href="/"> Back</a>
 <p>
         ${error}
@@ -27,4 +32,5 @@
     </form>
 
 </body>
+</div>
 </html>

@@ -22,20 +22,29 @@
 </form>
 <p>${removing_error}</p>
     <table border="2">
-        <tr><td>Username List</td></tr>
+        <tr>
+            <td>Username List</td>
+            <td>First name</td>
+            <td>Last name</td>
+        </tr>
         <c:forEach items="${userList}" var="usr">
             <tbody style="vertical-align: center">
             <tr>
                 <td>
                         ${usr}
-                    <td>
+                <td>
+                <td>
+                        ${user.getFirstName()}
+                 </td>
+                  <td>
+                        ${user.getLastName()}
+                </td
                             <form method="post">
                                 <input type="hidden" name="user_to_use" value="${usr}"/>
                             <c:choose>
                                 <c:when test="${usr!=username}">
                                     <input type="submit" name="removing_user" value="remove" onclick="{return confirm('Are you sure you want to remove this user?')}"/>
                                 </c:when>
-                                <c:otherwise>  </c:otherwise>
                             </c:choose>
                                 <input type="submit" name="do_edit" value="edit" />
                             </form>
@@ -45,5 +54,12 @@
             </tbody>
         </c:forEach>
     </table>
+
+    <form method="post">
+                <input type="submit" value="Add" name="addUser" />
+                <input type="submit" value="Back" name="back" />
+                <input type="submit" value="Log Out" name="logout" />
+    </form>
 </body>
+</div>
 </html>
