@@ -13,6 +13,10 @@
     <input type="submit" name="logout" value="Log out"/>
 </form>
 
+<form method="post">
+    <input type="submit" name="addUser" value="add user"/>
+</form>
+
 <p>${removing_error}</p>
     <table border="2">
         <tr><td>Username List</td></tr>
