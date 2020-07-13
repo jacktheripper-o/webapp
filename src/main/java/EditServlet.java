@@ -57,43 +57,43 @@ public class EditServlet extends HttpServlet implements Routable{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = (String)req.getSession().getAttribute("editing_user");
-        if (req.getParameter("edit_username")!= null){
+        if (req.getParameter("edit_user")!= null) {
             String newUsername = req.getParameter("new_username");
             try {
-                if (databaseService.containUser(newUsername)){
-                    req.setAttribute("error","User already exist");
-                }else {
+                if (databaseService.containUser(newUsername)) {
+                    req.setAttribute("error", "User already exist");
+                } else {
                     databaseService.updateUsername(newUsername, username);
                     username = newUsername;
                 }
-                req.getSession().setAttribute("editing_user",username);
+                req.getSession().setAttribute("editing_user", username);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }else if (req.getParameter("edit_password") != null){
+
             String newPassword = req.getParameter("new_password");
             String confirmPassword = req.getParameter("confirm_password");
-            if (newPassword.compareTo(confirmPassword) != 0){
+            if (newPassword.compareTo(confirmPassword) != 0) {
                 String error = "Password doesn't match";
                 req.setAttribute("password_error", error);
-            }else {
+            } else {
                 try {
                     databaseService.updatePassword(newPassword, username);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-        }else if (req.getParameter("edit_first_name") != null){
+
             String newFirstname = req.getParameter("new_first_name");
             try {
-                databaseService.updateFirstName(newFirstname,username);
+                databaseService.updateFirstName(newFirstname, username);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }else if(req.getParameter("edit_last_name") != null){
+
             String newLastName = req.getParameter("new_last_name");
             try {
-                databaseService.updateLastName(newLastName,username);
+                databaseService.updateLastName(newLastName, username);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
