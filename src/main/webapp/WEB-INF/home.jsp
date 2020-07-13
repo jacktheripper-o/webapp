@@ -31,7 +31,7 @@
             <tbody style="vertical-align: center">
             <tr>
                 <td>
-                        ${usr}
+                        ${user.getUsername()}
                 </td>
                 <td>
                         ${user.getFirstName()}
@@ -41,9 +41,9 @@
                 </td>
                 <td>
                             <form method="post">
-                                <input type="hidden" name="user_to_use" value="${usr}"/>
+                                <input type="hidden" name="user_to_use" value="${user.getUsername()}"/>
                             <c:choose>
-                                <c:when test="${usr!=username}">
+                                <c:when test="${user.getUsername()!=username}">
                                     <input type="submit" name="removing_user" value="remove" onclick="{return confirm('Are you sure you want to remove this user?')}"/>
                                 </c:when>
                             </c:choose>
