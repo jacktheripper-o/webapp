@@ -60,7 +60,6 @@ public class HomeServlet extends HttpServlet implements Routable{
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
-//            request.setAttribute("username", username);
             try {
                 refreshTable(request,response);
             } catch (SQLException e) {

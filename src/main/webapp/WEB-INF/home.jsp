@@ -32,7 +32,7 @@
                                 <c:when test="${usr!=username}">
                                     <input type="submit" name="removing_user" value="remove" onclick="{return confirm('Are you sure you want to remove this user?')}"/>
                                 </c:when>
-                                <c:otherwise> Removing not allowed here </c:otherwise>
+                                <c:otherwise>  </c:otherwise>
                             </c:choose>
                                 <input type="submit" name="do_edit" value="edit" />
                             </form>
