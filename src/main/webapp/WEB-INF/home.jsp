@@ -21,7 +21,7 @@
     <input type="submit" name="add_user" value="Add user" required/>
 </form>
 <p>${removing_error}</p>
-    <table border="2">
+    <table border="1">
         <tr>
             <td>Username List</td>
             <td>First name</td>
@@ -54,12 +54,6 @@
             </tbody>
         </c:forEach>
     </table>
-
-    <form method="post">
-                <input type="submit" value="Add" name="addUser" />
-                <input type="submit" value="Back" name="back" />
-                <input type="submit" value="Log Out" name="logout" />
-    </form>
 </body>
 </div>
 </html>
