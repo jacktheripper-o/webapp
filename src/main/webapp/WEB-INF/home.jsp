@@ -34,10 +34,10 @@
                         ${usr}
                 </td>
                 <td>
-                        ${user.getFirstName()}
+                        ${usr.getFirstName()}
                  </td>
                   <td>
-                        ${user.getLastName()}
+                        ${usr.getLastName()}
                 </td>
                 <td>
                             <form method="post">
