@@ -21,7 +21,6 @@
         <input type="text" placeholder="Enter new username" name="newUsername" /><br>
         <input type="password" placeholder="Enter password" name="password" required/><br>
         <input type="password" placeholder="Confirm password" name="confirmPassword" required/><br>
-        <input type="password" placeholder="Enter new password" name="newPassword" ><br>
         <input type="text" placeholder="Enter new first name" name="firstName" /><br>
         <input type="text" placeholder="Enter new last name" name="lastName" /><br>
         <input type="submit" value="edit_user" name="edit_user" required/>
