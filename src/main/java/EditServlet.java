@@ -100,7 +100,7 @@ public class EditServlet extends HttpServlet implements Routable{
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
-            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/home.jsp");
+            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/edit.jsp");
             rd.include(req, resp);
         }
     }

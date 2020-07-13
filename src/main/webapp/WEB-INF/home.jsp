@@ -32,7 +32,7 @@
             <tr>
                 <td>
                         ${usr}
-                <td>
+                </td>
                 <td>
                         ${user.getFirstName()}
                  </td>
