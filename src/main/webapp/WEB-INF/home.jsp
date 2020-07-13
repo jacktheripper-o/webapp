@@ -14,7 +14,7 @@
 </form>
 
 <form method="post">
-    <input type="submit" name="addUser" value="add user"/>
+    <input type="submit" name="add User" value="adduser"/>
 </form>
 
 <p>${removing_error}</p>
