@@ -33,7 +33,14 @@ public class AdduseServlet extends HttpServlet implements Routable{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String username = (String) req.getSession().getAttribute("addUser");
+        boolean authorized = false;
+        try {
+            authorized = securityService.isAuthorized(req);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if(authorized) {
+            String username = (String) req.getSession().getAttribute("addUser");
             try {
                 User user = databaseService.getUser(username);
                 req.setAttribute("username", user.getUsername());
@@ -44,8 +51,10 @@ public class AdduseServlet extends HttpServlet implements Routable{
             } catch (ClassNotFoundException e1) {
                 e1.printStackTrace();
             }
+        }else resp.sendRedirect("/login");
 
     }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getParameter("add_user") != null) {
