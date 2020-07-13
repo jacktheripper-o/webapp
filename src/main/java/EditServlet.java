@@ -56,10 +56,11 @@ public class EditServlet extends HttpServlet implements Routable{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String username = (String)req.getSession().getAttribute("editing_user");
-        if (req.getParameter("edit_user")!= null) {
-            String newUsername = req.getParameter("new_username");
+        String username = (String) req.getSession().getAttribute("editing_user");
+        if (req.getParameter("edit_user") != null) {
+
             try {
+                String newUsername = req.getParameter("new_username");
                 if (databaseService.containUser(newUsername)) {
                     req.setAttribute("error", "User already exist");
                 } else {
@@ -67,51 +68,39 @@ public class EditServlet extends HttpServlet implements Routable{
                     username = newUsername;
                 }
                 req.getSession().setAttribute("editing_user", username);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
 
-            String newPassword = req.getParameter("new_password");
-            String confirmPassword = req.getParameter("confirm_password");
-            if (newPassword.compareTo(confirmPassword) != 0) {
-                String error = "Password doesn't match";
-                req.setAttribute("password_error", error);
-            } else {
-                try {
+                String newPassword = req.getParameter("new_password");
+                String confirmPassword = req.getParameter("confirm_password");
+                if (newPassword.equals(confirmPassword)) {
+                    String error = "Password doesn't match";
+                    req.setAttribute("password_error", error);
+                } else {
                     databaseService.updatePassword(newPassword, username);
-                } catch (SQLException e) {
-                    e.printStackTrace();
+
                 }
-            }
 
-            String newFirstname = req.getParameter("new_first_name");
-            try {
+                String newFirstname = req.getParameter("new_first_name");
+
                 databaseService.updateFirstName(newFirstname, username);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
 
-            String newLastName = req.getParameter("new_last_name");
-            try {
+
+                String newLastName = req.getParameter("new_last_name");
+
                 databaseService.updateLastName(newLastName, username);
+
+
+                User user = databaseService.getUser(username);
+                String firstName = user.getFirstName();
+                String lastName = user.getLastName();
+                req.setAttribute("username", username);
+                req.setAttribute("first_name", firstName);
+                req.setAttribute("last_name", lastName);
             } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
         }
-        try {
-            User user = databaseService.getUser(username);
-            String firstName = user.getFirstName();
-            String lastName = user.getLastName();
-            req.setAttribute("username", username);
-            req.setAttribute("first_name", firstName);
-            req.setAttribute("last_name", lastName);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/edit.jsp");
-        rd.include(req, resp);
     }
 
     @Override
