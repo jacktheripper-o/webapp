@@ -7,8 +7,6 @@ package service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class SecurityService {
 
@@ -22,7 +20,6 @@ public class SecurityService {
     public boolean isAuthorized(HttpServletRequest request) throws SQLException {
         String username = (String) request.getSession()
                 .getAttribute("username");
-        // do checking
        return (username != null && databaseService.containUser(username));
     }
     
