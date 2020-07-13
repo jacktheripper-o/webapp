@@ -24,26 +24,18 @@
     <table border="1">
         <tr>
             <td>Username List</td>
-            <td>First name</td>
-            <td>Last name</td>
         </tr>
         <c:forEach items="${userList}" var="usr">
             <tbody style="vertical-align: center">
             <tr>
                 <td>
-                        ${user.getUsername()}
-                </td>
-                <td>
-                        ${user.getFirstName()}
-                 </td>
-                  <td>
-                        ${user.getLastName()}
+                        ${usr}
                 </td>
                 <td>
                             <form method="post">
-                                <input type="hidden" name="user_to_use" value="${user.getUsername()}"/>
+                                <input type="hidden" name="user_to_use" value="${usr}"/>
                             <c:choose>
-                                <c:when test="${user.getUsername()!=username}">
+                                <c:when test="${usr!=username}">
                                     <input type="submit" name="removing_user" value="remove" onclick="{return confirm('Are you sure you want to remove this user?')}"/>
                                 </c:when>
                             </c:choose>
