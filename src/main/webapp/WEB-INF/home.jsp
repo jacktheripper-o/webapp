@@ -12,14 +12,7 @@
 <form method="post">
     <input type="submit" name="logout" value="Log out"/>
 </form>
-<p>${adding_error}</p>
-<form method="post">
-    <input type="text" name="adding_username" placeholder="username" required /><br>
-    <input type="password" name="adding_password" placeholder="password" required/><br>
-    <input type="password" name="confirm_password" placeholder="confirm password" required>
-    <br>
-    <input type="submit" name="add_user" value="Add user" required/>
-</form>
+
 <p>${removing_error}</p>
     <table border="2">
         <tr><td>Username List</td></tr>
