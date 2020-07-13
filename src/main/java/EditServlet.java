@@ -60,7 +60,7 @@ public class EditServlet extends HttpServlet implements Routable{
         if (req.getParameter("edit_user") != null) {
 
             try {
-                String newUsername = req.getParameter("new_username");
+                String newUsername = req.getParameter("newUsername");
                 if (databaseService.containUser(newUsername)) {
                     req.setAttribute("error", "User already exist");
                 } else {
@@ -69,8 +69,8 @@ public class EditServlet extends HttpServlet implements Routable{
                 }
                 req.getSession().setAttribute("editing_user", username);
 
-                String newPassword = req.getParameter("new_password");
-                String confirmPassword = req.getParameter("confirm_password");
+                String newPassword = req.getParameter("password");
+                String confirmPassword = req.getParameter("confirmPassword");
                 if (newPassword.equals(confirmPassword)) {
                     String error = "Password doesn't match";
                     req.setAttribute("password_error", error);
@@ -79,12 +79,12 @@ public class EditServlet extends HttpServlet implements Routable{
 
                 }
 
-                String newFirstname = req.getParameter("new_first_name");
+                String newFirstname = req.getParameter("firstName");
 
                 databaseService.updateFirstName(newFirstname, username);
 
 
-                String newLastName = req.getParameter("new_last_name");
+                String newLastName = req.getParameter("lastName");
 
                 databaseService.updateLastName(newLastName, username);
 
@@ -93,8 +93,8 @@ public class EditServlet extends HttpServlet implements Routable{
                 String firstName = user.getFirstName();
                 String lastName = user.getLastName();
                 req.setAttribute("username", username);
-                req.setAttribute("first_name", firstName);
-                req.setAttribute("last_name", lastName);
+                req.setAttribute("firstName", firstName);
+                req.setAttribute("lastName", lastName);
             } catch (SQLException e) {
                 e.printStackTrace();
             } catch (ClassNotFoundException e) {
