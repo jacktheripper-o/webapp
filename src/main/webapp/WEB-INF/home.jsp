@@ -38,7 +38,8 @@
                  </td>
                   <td>
                         ${user.getLastName()}
-                </td
+                </td>
+                <td>
                             <form method="post">
                                 <input type="hidden" name="user_to_use" value="${usr}"/>
                             <c:choose>
