@@ -76,34 +76,7 @@ public class HomeServlet extends HttpServlet implements Routable{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if(req.getParameter("add_user")!= null){
-            String newUsername = req.getParameter("adding_username");
-            try {
-                if (databaseService.containUser(newUsername)){
-                    String error = "Username exist in database";
-                    req.setAttribute("adding_error", error);
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                String error = e.getMessage();
-                req.setAttribute("adding_error", error);
-            }
-            String newPassword = req.getParameter("adding_password");
-            String confirmPassword = req.getParameter("confirm_password");
-            if (newPassword.compareTo(confirmPassword) == 0) {
-                try {
-                    databaseService.createUser(newUsername, newPassword);
-                    refreshTable(req, resp);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                    String error = e.getMessage();
-                    req.setAttribute("adding_error", error);
-                }
-            }else{
-                String error = "Password doesn't match";
-                req.setAttribute("adding_error", error);
-            }
-        }else if (req.getParameter("removing_user")!=null){
+        if (req.getParameter("removing_user")!=null){
             String user = req.getParameter("user_to_use");
             try {
                 databaseService.delUser(user);
@@ -121,6 +94,9 @@ public class HomeServlet extends HttpServlet implements Routable{
             req.getSession().invalidate();
             resp.sendRedirect("/login");
         }
-
+        if (req.getParameter("addUser") != null) {
+            resp.sendRedirect("/adduser");
+        }
     }
+
 }
