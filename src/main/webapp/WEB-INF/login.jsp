@@ -1,6 +1,7 @@
 <html>
     <body>
         <h2>Login</h2>
+        <div align="center">
         <p>${error}</p>
         <form action="/login" method="post">
             Username:<br/>
