@@ -22,9 +22,9 @@ public class DatabaseService {
     private PreparedStatement preparedStatement;
 
     public DatabaseService() throws SQLException, ClassNotFoundException {
-        this.jdbcDriverStr = "com.mysql.jdbc.Driver";
+        this.jdbcDriverStr = "com.mysql.cj.jdbc.Driver";
         this.jdbcURL = "jdbc:mysql://localhost/webapp?"
-                + "user=jacktheripper&password=password";
+                + "user=hg&password=password";
         Class.forName(jdbcDriverStr);
         connection = DriverManager.getConnection(jdbcURL);
         statement = connection.createStatement();
@@ -33,17 +33,17 @@ public class DatabaseService {
 
     public void createDatabase() throws SQLException {
         statement.execute("create table if not exists user_table (username varchar(40) not null , password varchar(200) not null, firstname varchar(200), lastname varchar(200))");
-        resultSet = statement.executeQuery("select * from webapp_ooc.user_table;");
+        resultSet = statement.executeQuery("select * from webapp.user_table;");
         if (!resultSet.next()){
             String hased = BCrypt.hashpw("admin", BCrypt.gensalt());
-            preparedStatement = connection.prepareStatement("insert into webapp_ooc.user_table values ('admin','"+ hased +"','admin','admin')");
+            preparedStatement = connection.prepareStatement("insert into webapp.user_table values ('admin','"+ hased +"','admin','admin')");
             preparedStatement.execute();
         }
     }
 
     public void readData() throws Exception {
         try {
-            resultSet = statement.executeQuery("select * from webapp_ooc.user_table;");
+            resultSet = statement.executeQuery("select * from webapp.user_table;");
             getResultSet(resultSet);
         } finally {
             close();
@@ -52,7 +52,6 @@ public class DatabaseService {
 
     private void getResultSet(ResultSet resultSet) throws Exception {
         while (resultSet.next()) {
-//            Integer id = resultSet.getInt(TestTableColumns.id.toString());
             String username = resultSet.getString(user_table.username.toString());
             String password = resultSet.getString(user_table.password.toString());
         }

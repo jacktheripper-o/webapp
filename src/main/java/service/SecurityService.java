@@ -10,10 +10,6 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- *
- * @author gigadot
- */
 public class SecurityService {
 
     private DatabaseService databaseService;

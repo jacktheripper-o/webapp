@@ -20,10 +20,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- *
- * @author gigadot
- */
+
 public class HomeServlet extends HttpServlet implements Routable{
 
     private SecurityService securityService;

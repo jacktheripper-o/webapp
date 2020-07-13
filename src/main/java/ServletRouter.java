@@ -12,10 +12,6 @@ import javax.servlet.http.HttpServlet;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author gigadot
- */
 public class ServletRouter {
 
     private static final List<Class<? extends Routable>> routables = new ArrayList<>();
