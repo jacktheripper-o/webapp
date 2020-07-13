@@ -3,9 +3,10 @@
 
 <html>
 <body>
+<title>Home Page</title>
+<div align="center">
 <h2>Welcome, ${user.getUsername()}</h2>
-<h2>First name : ${user.getFirstName()}</h2>
-<h2>Last name : ${user.getLastName()}</h2>
+<h2>${user.getFirstName()} ${user.getLastName()}</h2>
 <br/>
 <form method="post">
     <input type="submit" name="logout" value="Log out"/>
@@ -33,7 +34,7 @@
                                 <c:when test="${usr!=username}">
                                     <input type="submit" name="removing_user" value="remove" onclick="{return confirm('Are you sure you want to remove this user?')}"/>
                                 </c:when>
-                                <c:otherwise> Removing not allowed here </c:otherwise>
+                                <c:otherwise>  </c:otherwise>
                             </c:choose>
                                 <input type="submit" name="do_edit" value="edit" />
                             </form>

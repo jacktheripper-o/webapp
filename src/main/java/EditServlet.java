@@ -24,10 +24,6 @@ public class EditServlet extends HttpServlet implements Routable{
         this.databaseService = new DatabaseService();
     }
 
-    @Override
-    public String getMapping() {
-        return "/edit";
-    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -114,6 +110,10 @@ public class EditServlet extends HttpServlet implements Routable{
         rd.include(req, resp);
     }
 
+    @Override
+    public String getMapping() {
+        return "/edit";
+    }
     @Override
     public void setSecurityService(SecurityService securityService) {
         this.securityService = securityService;
