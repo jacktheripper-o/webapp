@@ -91,7 +91,8 @@ public class HomeServlet extends HttpServlet implements Routable{
             req.getSession().invalidate();
             resp.sendRedirect("/login");
         }
-        if (req.getParameter("addUser") != null) {
+        else if(req.getParameter("addUser")!= null){
+            req.getSession().invalidate();
             resp.sendRedirect("/adduser");
         }
     }
