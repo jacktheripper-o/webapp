@@ -62,7 +62,7 @@ public class AddUserServlet extends HttpServlet implements Routable {
         }
         String newPassword = request.getParameter("adding_password");
         String confirmPassword = request.getParameter("confirm_password");
-        if (newPassword.compareTo(confirmPassword) == 0) {
+        if (newPassword.equals(confirmPassword)) {
             try {
                 databaseService.createUser(newUsername, newPassword);
                 refreshTable(request, response);
