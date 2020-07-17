@@ -1,4 +1,4 @@
-import models.User;
+import service.User;
 import service.DatabaseService;
 import service.SecurityService;
 

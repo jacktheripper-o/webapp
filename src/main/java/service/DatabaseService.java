@@ -4,13 +4,11 @@ import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.*;
 import java.util.ArrayList;
-import models.User;
 
 public class DatabaseService {
 
     enum user_table {
         username, password, firstname, lastname;
-        // todo: add name and last name
     }
 
     private final String jdbcDriverStr;

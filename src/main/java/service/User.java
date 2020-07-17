@@ -1,4 +1,4 @@
-package models;
+package service;
 
 import service.DatabaseService;
 
@@ -21,6 +21,10 @@ public class User {
         this.firstName = firstName;
     }
 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -31,9 +35,5 @@ public class User {
 
     public String getLastName() {
         return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 }

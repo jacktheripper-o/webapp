@@ -9,33 +9,27 @@
 <h2>Welcome, ${user.getUsername()}</h2>
 <h2>${user.getFirstName()} ${user.getLastName()}</h2>
 <br/>
+
 <form method="post">
     <input type="submit" name="logout" value="Log out"/>
 </form>
-<p>${adding_error}</p>
-<form method="post">
-    <input type="text" name="adding_username" placeholder="username" required /><br>
-    <input type="password" name="adding_password" placeholder="password" required/><br>
-    <input type="password" name="confirm_password" placeholder="confirm password" required>
-    <br>
-    <input type="submit" name="add_user" value="Add user" required/>
-</form>
+
 <p>${removing_error}</p>
     <table border="1">
         <tr>
             <td>Username List</td>
         </tr>
-        <c:forEach items="${userList}" var="usr">
+        <c:forEach items="${userList}" var="user">
             <tbody style="vertical-align: center">
             <tr>
                 <td>
-                        ${usr}
+                        ${user}
                 </td>
                 <td>
                             <form method="post">
-                                <input type="hidden" name="user_to_use" value="${usr}"/>
+                                <input type="hidden" name="user_to_use" value="${user}"/>
                             <c:choose>
-                                <c:when test="${usr!=username}">
+                                <c:when test="${user!=username}">
                                     <input type="submit" name="removing_user" value="remove" onclick="{return confirm('Are you sure you want to remove this user?')}"/>
                                 </c:when>
                             </c:choose>
@@ -47,6 +41,13 @@
             </tbody>
         </c:forEach>
     </table>
+
+
+    <form method="get" action="/adduser">
+        <button type="submit" name="add_user" value="add_user">  Add user </button>
+    </form>
+
+
 </body>
 </div>
 </html>
