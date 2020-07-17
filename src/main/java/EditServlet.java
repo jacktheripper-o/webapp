@@ -63,6 +63,9 @@ public class EditServlet extends HttpServlet implements Routable{
                 String newUsername = req.getParameter("newUsername");
                 if (databaseService.containUser(newUsername)) {
                     req.setAttribute("error", "User already exist");
+                    RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/edit.jsp");
+                    rd.include(req, resp);
+                    return;
                 } else {
                     databaseService.updateUsername(newUsername, username);
                     username = newUsername;
@@ -70,14 +73,8 @@ public class EditServlet extends HttpServlet implements Routable{
                 req.getSession().setAttribute("editing_user", username);
 
                 String newPassword = req.getParameter("password");
-                String confirmPassword = req.getParameter("confirmPassword");
-                if (newPassword.equals(confirmPassword)) {
-                    String error = "Password doesn't match";
-                    req.setAttribute("password_error", error);
-                } else {
-                    databaseService.updatePassword(newPassword, username);
+                databaseService.updatePassword(newPassword, username);
 
-                }
 
                 String newFirstname = req.getParameter("firstName");
 

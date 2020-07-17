@@ -66,6 +66,7 @@ public class AddUserServlet extends HttpServlet implements Routable {
             try {
                 databaseService.createUser(newUsername, newPassword);
                 refreshTable(request, response);
+                response.sendRedirect("/");
             } catch (SQLException e) {
                 e.printStackTrace();
                 String error = e.getMessage();
